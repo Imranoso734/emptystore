@@ -35,9 +35,11 @@
         {% endfor %}     
       </tbody>
     </table>
-      <div class="cart-total-price">
-        <p>Total Price Is abc: {{ cart.total_price | money }}</p>
-      </div>
+      <!-- <div class="cart-total-price">
+        <p>Total Price Is abc:: {{ cart.total_price | money }}</p>
+      </div> -->
+
+      
     <div class="btn-div">
       <button class="btn btn-info" type="submit" name="update">Update</button>
       <button class="btn btn-success" type="submit" name="checkout">Checkout</button>
