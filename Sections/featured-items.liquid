@@ -1,0 +1,57 @@
+<div class="container">
+    <h2 class="feature-title">Feature Product</h2>
+  <div class="feature-product-slider">
+    {% for block in section.blocks %}  
+    <a href="{{ block.settings.link }}">
+    <div class="feature-item">
+        <div class="feature-head justify-content-center d-flex">        
+            <img src="{{ block.settings.prd_img  | img_url: '450x450'}} " alt="">
+        </div>
+        <div class="feature-p-title">
+       <h3>{{  block.settings.title  }}</h3>
+        </div>
+        <!-- <div class="p-detail">
+            <p>{{ block.settings.detail  }}</p>
+        </div> -->
+    </div>
+</a>
+    {% endfor %}   
+</div>    
+</div>
+
+
+{% schema %}
+{
+    "name":"Feature Items",
+     "blocks":[
+           {
+            "type": "select",
+             "name":"Feature Product",
+             "settings":[
+                    {
+                        "label":"Product Image",
+                        "type":"image_picker",
+                        "id":"prd_img"
+                    },                     
+                    {
+                        "id": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Select Product"
+                     }
+             ]  
+        } 
+     ],
+    "presets":[
+        {
+            "name": "Add Products",
+            "category": "Feature Product"
+        }
+    ]
+}
+
+{% endschema %}

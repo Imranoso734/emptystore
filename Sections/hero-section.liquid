@@ -1,0 +1,22 @@
+
+<img class="hero-image" src="{{ section.settings.hero_img  | img_url: '1366x450'}} " alt=""> 
+
+{% schema %}
+    {    
+        "name": "Banner Image",
+        "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "hero_img",
+                        "label":"Select Image"
+                    }
+        ],
+        "presets": [
+                {
+                "category": "Banner One Image",
+                "name": "Select Banner Image"                           
+                }
+        ]
+    }
+
+{% endschema %}

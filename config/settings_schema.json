@@ -1,0 +1,20 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Empty Store",
+    "theme_version": "1.0.0",
+    "theme_author": "Muhammad Imran",
+    "theme_documentation_url": "https:\/\/www.shopify.com",
+    "theme_support_url": "https:\/\/www.shopify.com"
+  },
+  {
+    "name": "Color 44",
+    "settings": [
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "select Color for Links"
+      }
+    ]
+  }
+]

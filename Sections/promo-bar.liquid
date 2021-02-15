@@ -1,0 +1,40 @@
+<div class="promo-bar">
+<div class="container">
+    <marquee behavior="scroll" direction="left" scrollamount="10" onmouseover="this.stop();" onmouseout="this.start();">
+    {% for block in section.blocks %}  
+        <a href="{{block.settings.link}}"> <h5>{{ block.settings.promobar_detail}}</h5></a>
+    {% endfor %}
+</marquee>
+</div>
+</div>
+{% schema %}
+{
+    "name":"Promo Bar",
+     "blocks":[
+           {
+            "type": "select",
+             "name":"Promo bar",
+             "settings":[
+                    {
+                        "id": "promobar_detail",
+                        "type": "text",
+                        "label": "Offer"
+                    },
+                    {
+                        "id": "link",
+                        "type": "url",
+                        "label": "Select Product"
+                     }
+
+             ]  
+        } 
+     ],
+    "presets":[
+        {
+            "category": "Feature Product",
+            "name": "Add Promo"
+        }
+    ]
+}
+
+{% endschema %}

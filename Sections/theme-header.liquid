@@ -1,0 +1,140 @@
+<div class="menu-bar shadow py-2">
+<div class="container">
+{%if section.settings.align_menu=="right" %}
+  <div class="row ">          
+        <div class="col-lg-2 text-center">
+            <img class="logo-img" src="{{ section.settings.theme_logo  | img_url: '240x150'}} " alt=""> 
+        </div>
+        <div class="col lg-8 my-auto">
+            <ul class="mb-0 main-menu d-flex justify-content-end">       
+                {% for link in linklists[section.settings.main_linklist].links %}
+                {% assign child_list_handle = link.title | handleize %}
+                {% if linklists[child_list_handle].links != blank %}
+
+                    <li class="have-child list-unstyled">
+                    <a class="has-child-link" href="{{ link.url }}">{{ link.title }}</a>              
+                        <ul class="child-links shadow" style="column-count: {{section.settings.colunm_count}} ">
+                        {% for childlink in linklists[child_list_handle].links %}
+                            <li class="list-unstyled"> <a class="sub-link" href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                            {% endfor %}
+                        </ul>      
+         
+                    </li> 
+                {% else %}
+                <li class="list-unstyled"> <a class="main-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endif %}
+                {% endfor %}
+                <a class="main-link" href="/cart">cart</a>    
+            </ul>
+        </div>
+</div>
+{%elsif section.settings.align_menu=="left" %}
+<div class="row ">   
+<div class="col lg-8 my-auto">
+<ul class="mb-0 main-menu d-flex justify-content-start">       
+   {% for link in linklists[section.settings.main_linklist].links %}
+   {% assign child_list_handle = link.title | handleize %}
+   {% if linklists[child_list_handle].links != blank %}
+
+       <li class="have-child list-unstyled">
+       <a class="has-child-link" href="{{ link.url }}">{{ link.title }}</a>              
+           <ul class="child-links" style="column-count: {{section.settings.colunm_count}} ">
+           {% for childlink in linklists[child_list_handle].links %}
+               <li class="list-unstyled"> <a class="sub-link" href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+               {% endfor %}
+           </ul>      
+     </li> 
+   {% else %}
+   <li class="list-unstyled"> <a class="main-link" href="{{ link.url }}">{{ link.title }}</a></li>
+   {% endif %}
+   {% endfor %}
+   <a class="main-link" href="/cart">cart</a>    
+</ul>
+</div>
+<div class="col-lg-2 text-center">
+    <img class="logo-img" src="{{ section.settings.theme_logo  | img_url: '240x150'}} " alt=""> 
+</div>
+</div>
+{%elsif section.settings.align_menu=="center" %}
+<div class="row ">      
+    <div class="col-lg-12 text-center">
+        <img class="logo-img" src="{{ section.settings.theme_logo  | img_url: '240x150'}} " alt=""> 
+    </div>
+    <div class="col-lg-12 my-auto">
+        <ul class="mb-0 main-menu d-flex justify-content-center">    
+       {% for link in linklists[section.settings.main_linklist].links %}
+       {% assign child_list_handle = link.title | handleize %}
+       {% if linklists[child_list_handle].links != blank %}
+    
+           <li class="have-child list-unstyled">
+           <a class="has-child-link" href="{{ link.url }}">{{ link.title }}</a>              
+               <ul class="child-links" style="column-count: {{section.settings.colunm_count}} ">
+               {% for childlink in linklists[child_list_handle].links %}
+                   <li class="list-unstyled"> <a class="sub-link" href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                   {% endfor %}
+               </ul>      
+         </li> 
+       {% else %}
+       <li class="list-unstyled"> <a class="main-link" href="{{ link.url }}">{{ link.title }}</a></li>
+       {% endif %}
+       {% endfor %}
+       <a class="main-link" href="/cart">cart</a>    
+    </ul>
+    </div>
+   
+    </div>
+{%endif%}
+</div>
+</div>
+  
+  {% schema %}
+    {
+      "name": "Main Menu",
+      "settings": [
+                {
+                    "label":"Menu Align",
+                    "type":"radio",
+                    "id":"align_menu",
+                    "default": "right",
+                    "options": [
+                                    {
+                                        "label":"Left",
+                                        "value": "left"
+                                    },
+                                    {
+                                        "label":"Center",
+                                        "value": "center"
+                                    },
+                                    {
+                                        "label":"Right",
+                                        "value": "right"
+                                    }
+                                ]
+                },
+                {
+                    "label":"Sub Menu Column",
+                    "id":"colunm_count",
+                    "type":"text",
+                    "default":"3"
+                },
+                {
+                    "label": "Select Menu",
+                    "id": "main_linklist",
+                    "type": "link_list",
+                    "default": "main-menu"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "theme_logo",
+                    "label":"Select Theme Logo"
+                }
+      ]
+    }
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}
+  

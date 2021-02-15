@@ -1,0 +1,58 @@
+<div class="">
+<div class="responsive">   
+  {% for block in section.blocks %}  
+    <img class="banner-image" src="{{ block.settings.banner-img  | img_url: '1366x450'}} " alt=""> 
+ {% endfor %}
+</div> 
+</div>
+{% schema %}
+{
+  "name": "Banner Slider",	
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Image",
+      "settings": [
+        {
+          "id": "banner-img",
+          "type": "image_picker",
+       		"label": "Select Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Select Banner Images",
+      "category": "Banner Slider"     
+    }
+  ]
+}
+
+
+
+{% endschema %}
+
+
+
+<!-- 
+
+"settings": [
+    {
+      "id": "text-box",
+      "type": "text",
+      "label": "Heading",
+      "default": "Title"
+    },
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    },
+    {
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Click here"
+    }
+  ], -->
